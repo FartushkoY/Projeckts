@@ -50,7 +50,7 @@ public class Main {
 //        Имеется очередь Queue. Написать метод, возвращающий очередь Queue,
 //        в которой элементы расположены в обратном порядке.
 
-        Deque<Integer> queue = new LinkedList<>();
+        Queue<Integer> queue = new LinkedList<>();
         queue.add(1);
         queue.add(2);
         queue.add(3);
@@ -64,12 +64,15 @@ public class Main {
 
     }
 
-    private static Queue<Integer> sortInReverceOrder(Deque<Integer> queue) {
+    private static Queue<Integer> sortInReverceOrder(Queue<Integer> queue) {
         Queue<Integer> reverceQueue = new LinkedList<>();
+        Stack<Integer> stack = new Stack<>();
         int size = queue.size();
         for (int i = 0; i < size; i++) {
-//            Integer tmp= queue.removeLast();
-            reverceQueue.add(queue.removeLast());
+            stack.push(queue.remove());
+        }
+        for (int i = 0; i < size; i++) {
+            reverceQueue.add(stack.pop());
         }
         return reverceQueue;
     }

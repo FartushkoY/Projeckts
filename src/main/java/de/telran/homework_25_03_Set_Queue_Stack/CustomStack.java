@@ -25,9 +25,7 @@ public class CustomStack {
     }
 
     public String popCS() {
-        String elem = linkedList.getFirst();
-        linkedList.removeFirst();
-        return elem;
+        return linkedList.removeFirst();
     }
 
 
