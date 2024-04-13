@@ -1,4 +1,4 @@
-package de.telran.homework_Test.WaitingList;
+package de.telran.homework_Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,16 +25,14 @@ public class WaitingList {
         patientMap.put("9-30", "Skorik");
 
         getPatientsQueue(slotMap, patientMap);
-
     }
 
     private static void getPatientsQueue(Map<Integer, String> slotMap, Map<String, String> patientMap) {
         Integer slot = slotMap.keySet().iterator().next();
-        while (slot != slotMap.size() + 1) {
-            Integer nextSlot = slot;
-            String time = slotMap.get(nextSlot);
-            String patient = patientMap.get(slotMap.get(nextSlot));
-            if (patientMap.containsKey(slotMap.get(nextSlot))) {
+        while (slot <= slotMap.size()) {
+            String time = slotMap.get(slot);
+            String patient = patientMap.get(slotMap.get(slot));
+            if (patientMap.containsKey(slotMap.get(slot))) {
                 System.out.println(time + "  " + patient);
             }
             slot++;
