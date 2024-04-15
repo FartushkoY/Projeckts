@@ -1,6 +1,6 @@
 package de.telran.summary4.Task.figures;
 
-import org.jetbrains.annotations.NotNull;
+
 
 public class Square extends Rectangle implements Comparable<Square>{
 
@@ -9,7 +9,7 @@ public class Square extends Rectangle implements Comparable<Square>{
     }
 
     @Override
-    public int compareTo(@NotNull Square o) {
+    public int compareTo(Square o) {
         return Double.compare(getSide1(), o.getSide1());
     }
 }

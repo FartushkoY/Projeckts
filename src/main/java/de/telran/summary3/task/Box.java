@@ -1,6 +1,6 @@
 package de.telran.summary3.task;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -41,7 +41,7 @@ public class Box implements Iterable{
     }
 
 
-    @NotNull
+
     @Override
     public Iterator iterator() {
         return new MyBoxIterator();

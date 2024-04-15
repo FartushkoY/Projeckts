@@ -1,5 +1,6 @@
 package de.telran.practice_lesson_12;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main {
@@ -29,6 +30,7 @@ public class Main {
         managerMap.put(manager2.getId(), manager2);
         managerMap.put(manager3.getId(), manager3);
         managerMap.put(manager4.getId(), manager4);
+
 
 
         Map<Integer, Double> salaryMap = new HashMap<>();

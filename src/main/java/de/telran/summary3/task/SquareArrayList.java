@@ -1,6 +1,6 @@
 package de.telran.summary3.task;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -29,7 +29,7 @@ public class SquareArrayList implements Iterable{
     }
 
 
-    @NotNull
+
     @Override
     public Iterator iterator() {
         return new MySquareArrayListIterator();

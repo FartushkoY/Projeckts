@@ -1,6 +1,6 @@
 package de.telran.summary4.students;
 
-import org.jetbrains.annotations.NotNull;
+
 
 public class Student implements Comparable<Student>{
     private String name;
@@ -18,7 +18,7 @@ public class Student implements Comparable<Student>{
 
 
     @Override
-    public int compareTo(@NotNull Student o) {
+    public int compareTo(Student o) {
         return this.name.compareTo(o.name);
     }
 

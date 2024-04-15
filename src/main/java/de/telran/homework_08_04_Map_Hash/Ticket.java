@@ -54,14 +54,20 @@ public class Ticket {
         }
 //        System.out.println(roteMap);
 //        System.out.println(city);
-        while (roteMap.containsKey(city)) {
-            city = roteMap.get(city);
-
-//            System.out.println(city);
-        }
-        while (ticketMap.containsKey(city)) {
-            System.out.println(city + " -- " + ticketMap.get(city));
-            city = ticketMap.get(city);
-        }
+//        LinkedList<Map.Entry<String, String>> roteList = new LinkedList<>();
+//        while (roteMap.containsKey(city)) {
+//            Map.Entry<String, String> elem : roteMap.entrySet()) {
+//
+//                roteList.addFirst(elem);
+//            }
+//            city = roteMap.get(city);
+//
+//        }
+//        System.out.println("----");
+//        System.out.println(roteList);
+//        while (ticketMap.containsKey(city)) {
+//            System.out.println(city + " -- " + ticketMap.get(city));
+//            city = ticketMap.get(city);
+//        }
     }
 }

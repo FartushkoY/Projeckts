@@ -1,4 +1,4 @@
-package de.telran.algoritms.task_decision;
+package de.telran.Algorithms.homework1.task_decision;
 
 public class Predator extends Passenger{
 

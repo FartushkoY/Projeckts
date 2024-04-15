@@ -26,6 +26,32 @@ public class Item {
         return topKList;
     }
 
+    public static List<Item> getTopKWithPriorityQueue(List<Item> itemList, int k) {
+        Queue<Item> queue = new PriorityQueue<>(new Comparator<Item>() {
+            @Override
+            public int compare(Item o1, Item o2) {
+                return Double.compare(o2.price, o1.price);
+            }
+        });
+
+        for (int i = 0; i < k; i++) {
+            queue.add(itemList.get(i));
+        }
+
+        for (int i = k; i < itemList.size(); i++) {
+            Item item = itemList.get(i);
+            if (queue.peek().price > item.price) {
+                queue.poll();
+                queue.add(item);
+            }
+        }
+        LinkedList<Item> result = new LinkedList<>();
+        while (!queue.isEmpty()) {
+            result.addFirst(queue.poll());
+        }
+        return result;
+    }
+
 
     public static class ItemsByPriceComparator  implements Comparator<Item> {
 

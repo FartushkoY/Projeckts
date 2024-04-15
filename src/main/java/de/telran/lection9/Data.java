@@ -1,6 +1,6 @@
 package de.telran.lection9;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -41,7 +41,7 @@ public class Data implements Comparable<Data> {
     }
 
     @Override
-    public int compareTo(@NotNull Data another) {
+    public int compareTo(Data another) {
         // string -> int
         int result = this.stringData.compareTo(another.stringData);
         if (result == 0) {

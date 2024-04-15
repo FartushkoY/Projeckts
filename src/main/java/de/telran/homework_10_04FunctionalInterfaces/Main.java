@@ -43,6 +43,7 @@ public class Main {
 
 
         Consumer<Integer> evenOrOdd = (data) -> {
+
             if (data %2 == 0) System.out.println(data);
             else System.err.println(data);
         };
@@ -52,7 +53,7 @@ public class Main {
         evenOrOdd.accept(4);
 
 
-        Predicate<Cat> isWhiteCat = (cat) -> cat.getColour() == "White";
+        Predicate<Cat> isWhiteCat = (cat) -> cat.getColour().equals("White");
         System.out.println(isWhiteCat.test(new Cat("Tom", "Gray", 2)));
         System.out.println(isWhiteCat.test(new Cat("Tim", "White", 1)));
 

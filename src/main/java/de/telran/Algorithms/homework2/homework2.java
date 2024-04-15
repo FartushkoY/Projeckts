@@ -56,6 +56,10 @@ public class homework2 {
 
 
 
+
+
+
+
     private static boolean canPay(Integer[] coins, int i, int x) {
         if (i == coins.length) return false;
         if (x - coins[i] == 0) {

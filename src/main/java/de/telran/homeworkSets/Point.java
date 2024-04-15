@@ -1,6 +1,6 @@
 package de.telran.homeworkSets;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.*;
 
@@ -36,7 +36,7 @@ public class Point implements Comparable<Point>{
     }
 
         @Override
-    public int compareTo(@NotNull Point o) {
+    public int compareTo( Point o) {
         int result = this.x - o.x;
         if (result == 0) {
             result = this.y - o.y;

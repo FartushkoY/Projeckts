@@ -1,0 +1,24 @@
+DynamicIntArray delete = 41294
+ArrayList delete object = 5715
+LinkedListIntSingly delete = 20463
+LinkedList delete = 28989
+
+DynamicIntArray delete = 6340
+ArrayList delete = 393
+--- LinkedListIntSingly delete = 25027
+LinkedList delete = 11090
+
+DynamicIntArray insert = 2772
+ArrayList insert = 384
+LinkedListIntSingly insert = 7
+LinkedList insert = 18646
+
+DynamicIntArray add first = 5301
+ArrayList add first = 1051
+LinkedListIntSingly add first = 13
+LinkedList add first = 14
+
+DynamicIntArray add = 10
+ArrayList add = 17
+LinkedListIntSingly add = 19001
+LinkedList add = 13

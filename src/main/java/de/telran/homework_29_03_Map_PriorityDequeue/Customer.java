@@ -101,19 +101,24 @@ public class Customer implements Comparable<Customer>{
         }
         System.out.println(customersCountByConfirmedEmail);
 
-        Map<String, Set<String>> customersFromCountries = new TreeMap<>();
+        Map<String, List<Customer>> customersFromCountries = new TreeMap<>();
         for (Customer customer : list) {
-            String country = customer.country;
-            if (customersFromCountries.containsKey(country)) {
-                Set<String> customersSet = customersFromCountries.get(country);
-                customersSet.add(customer.name);
-            } else {
-                Set<String> customersSet = new TreeSet<>();
-                customersSet.add(customer.name);
-                customersFromCountries.put(country, customersSet);
-            }
+            List<Customer> customerList = customersFromCountries.getOrDefault(customer.country, new ArrayList<>());
+            customerList.add(customer);
+            customersFromCountries.put(customer.country, customerList);
+//            String country = customer.country;
+//            if (customersFromCountries.containsKey(country)) {
+//                List<String> customersList = customersFromCountries.get(country);
+//                customersList.add(customer.name);
+//            } else {
+//                List<String> customersList = new ArrayList<>();
+//                customersList.add(customer.name);
+//                customersFromCountries.put(country, customersList);
+//            }
         }
         System.out.println(customersFromCountries);
+
+        System.out.println("----------------");
 
         Map<String, Integer> totalBonusFromCountry = new TreeMap<>();
         for (Customer customer : list) {

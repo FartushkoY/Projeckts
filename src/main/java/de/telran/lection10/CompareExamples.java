@@ -1,6 +1,6 @@
 package de.telran.lection10;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.Objects;
 
@@ -44,7 +44,7 @@ public class CompareExamples {
         }
 
         @Override
-        public int compareTo(@NotNull CompareExamples.Item o) {
+        public int compareTo(CompareExamples.Item o) {
             return this.name.compareTo(o.name);
         }
 
