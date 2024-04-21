@@ -10,7 +10,6 @@ public class GenerateStreamExamples {
 
 
         Stream<String> stringStream = Stream.of("A", "B", "C", "D");
-
         Integer[] array = {1, 2, 3, 4, 5};
         Stream<Integer> streamFromArray = Arrays.stream(array);
 

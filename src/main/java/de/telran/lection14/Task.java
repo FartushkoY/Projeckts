@@ -14,7 +14,7 @@ public class Task {
         Consumer<Integer> printData = (data) -> System.out.println("---" + data + "---");
         printData.accept(123);
 
-        Employee employee1 = new Employee("John", "Smith", 32, 176);
+        Employee employee1 = new Employee("John", "Smith", 32, 176, true);
         Predicate<Employee> isAdultEmployee = (data) -> data.getAge() > 18;
         System.out.println(isAdultEmployee.test(employee1));
 

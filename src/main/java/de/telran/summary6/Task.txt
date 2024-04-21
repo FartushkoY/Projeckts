@@ -1,0 +1,62 @@
+
+Переписать фрагменты кода с применением стримов:
+1)
+	public static void feed(List<Cat> catList) {
+        for (int i = 0; i < catList.size(); i++) {
+            if (catList.get(i).isHungry()) {
+                catList.get(i).setHungry(false);
+            }
+        }
+	}
+2)
+	List<Double> doubles = new ArrayList<>();
+	for (Double d : doubleList) {
+		if (d % 2 == 1) {
+			doubles.add(d);
+		}
+	}
+	System.out.println(doubles);
+
+3)
+	String word = null;
+	for (String t : list){
+		if (t.length() == 3) {
+			word = t;
+			break;
+		}
+	}
+	System.out.println(word);
+
+4)
+	public static int getSum(List<Integer> integers) {
+        int oddSum = 0;
+        for(Integer i: integers) {
+            if(i % 2 != 0) {
+                oddSum += i;
+            }
+        }
+        return oddSum;
+    }
+
+5)
+	public static int findIndex(String[] data, String element) {
+        for (int i = 0; i < data.length; i++) {
+            if (data[i].equals(element)) {
+                return i;
+            }
+        }
+        return -1;
+	}
+
+6)
+	double sum = 0.0;
+	for (int i = 0; i < 10_000; i++) {
+		sum += 0.1;
+	}
+
+7)
+	public static void fill(List<Integer> list, int capacity) {
+		for (int i = 0; i < capacity; i++) {
+			list.add(i);
+		}
+	}

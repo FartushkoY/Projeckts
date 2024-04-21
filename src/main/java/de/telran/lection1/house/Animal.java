@@ -9,7 +9,7 @@ public abstract class Animal extends Animate {
     public Animal(String name, int age, String colour, boolean isHungry) {
         super (name, age);
         this.colour = colour;
-        this.isHungry = true;
+        this.isHungry = isHungry;
     }
 
     public void feed() {

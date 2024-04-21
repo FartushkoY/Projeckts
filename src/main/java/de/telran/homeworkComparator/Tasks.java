@@ -4,11 +4,11 @@ import java.util.*;
 
 public class Tasks {
     public static void main(String[] args) {
-        Employee employee1 = new Employee("John", "Smith", 32, 176);
-        Employee employee2 = new Employee("Sandra", "Bullock", 30, 132);
-        Employee employee3 = new Employee("Jack", "Nicolson", 63, 176);
-        Employee employee4 = new Employee("Tom", "White", 32, 88);
-        Employee employee5 = new Employee("John", "Smith", 45, 176);
+        Employee employee1 = new Employee("John", "Smith", 32, 176, true);
+        Employee employee2 = new Employee("Sandra", "Bullock", 30, 132, true);
+        Employee employee3 = new Employee("Jack", "Nicolson", 63, 176, true);
+        Employee employee4 = new Employee("Tom", "White", 32, 88, true);
+        Employee employee5 = new Employee("John", "Smith", 45, 176, true);
 
         List<Employee> employeeList = Arrays.asList(employee1, employee2, employee3, employee4, employee5);
         Collections.sort(employeeList, new Employee.SortByAgeComparator());

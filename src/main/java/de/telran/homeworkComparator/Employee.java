@@ -9,12 +9,14 @@ public class Employee implements Comparable<Employee> {
     private String surname;
     private int age;
     private int workingHoursInMonth;
+    private boolean isActive;
 
-    public Employee(String name, String surname, int age, int workingHoursInMonth) {
+    public Employee(String name, String surname, int age, int workingHoursInMonth, boolean isActive) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.workingHoursInMonth = workingHoursInMonth;
+        this.isActive = isActive;
     }
 
     @Override
@@ -25,6 +27,10 @@ public class Employee implements Comparable<Employee> {
                 ", age=" + age +
                 ", workingHoursInMonth=" + workingHoursInMonth +
                 '}';
+    }
+
+    public boolean isActive() {
+        return isActive;
     }
 
     @Override
