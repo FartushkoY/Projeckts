@@ -2,10 +2,7 @@ package de.telran.homework_22_04_Flatmap;
 
 import de.telran.lection1.house.Cat;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -20,22 +17,26 @@ public class Main {
         System.out.println(multiplyList);
 
 //        b). Получить все возможные повторяющиеся пары чисел из обоих списков [1, 1] [5, 5]
-        list1.stream().flatMap(el1 -> list2.stream().filter(el2 -> el2 == el1).map(el2 -> new Integer[]{el1, el2}))
+        list1.stream().distinct().flatMap(el1 -> list2.stream().filter(el2 -> el2 == el1).distinct().map(el2 -> new Integer[]{el1, el2}))
                 .forEach(i -> System.out.println(Arrays.toString(i)));
+        System.out.println("--------------");
 
 
 //        с). Найти все пары чисел, которые делятся друг на друга [2, 4] [3, 6] [5, 1]
+
+
+        list1.stream().distinct().flatMap(el1 -> list2.stream().filter(el2 -> el2 % el1 == 0 || el1 % el2 == 0)
+                .map(el2 -> new Integer[]{el1, el2})).forEach(i -> System.out.println(Arrays.toString(i)));
         System.out.println("--------------");
 
-        list1.stream().flatMap(el1 -> list2.stream().filter(el2 -> el2 % el1 == 0 || el1 % el2 == 0)
-                .map(el2 -> new Integer[]{el1, el2})).forEach(i -> System.out.println(Arrays.toString(i)));
 
 
+//        Преобразовать в List<String>
+        List<Optional<String>> list = Arrays.asList(Optional.of("A"), Optional.of("B"), Optional.empty());
+        List<String> stringList = list.stream().flatMap(Optional::stream).toList();
+        System.out.println(stringList);
+        System.out.println("----");
 
-
-
-//        Преобразовать в List
-//        List> list = Arrays.asList(Optional.of("A"), Optional.of("B"), Optional.empty());
 
 
         Cat cat1 = new Cat("Tom", 2, "black");
@@ -70,6 +71,20 @@ public class Main {
         Map<Integer, Integer> ageWhiteCountMap2 = catList.stream().filter(cat -> cat.getColour().equals("white")).collect(Collectors.toMap(Cat::getAge, age -> 1, Integer::sum));
         System.out.println(ageWhiteCountMap1);
         System.out.println(ageWhiteCountMap2);
+
+
+//        (доп. задача) Составить все возможные тройки пифагоровых чисел от 1 до 1000
+//        Пифагоровой тройкой называют три натуральных числа, из которых можно составить прямоугольный треугольник
+//        a^2 + b^2 = c^2
+//                [3, 4, 5]
+//                [6, 8, 10]
+
+        Object[] array = IntStream.range(1, 1000).boxed().flatMap(i -> IntStream.range(1, 1000).boxed()
+                .filter(j -> Math.sqrt(i * i + j * j) <= 1000 && Math.sqrt(i * i + j * j) % 1 == 0)
+                .map(j -> new int[]{i, j, (int) Math.sqrt(i * i + j * j)})).toArray();
+        System.out.println(Arrays.deepToString(array));
+
+
 
     }
 }
