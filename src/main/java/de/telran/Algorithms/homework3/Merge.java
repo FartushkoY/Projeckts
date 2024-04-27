@@ -7,6 +7,10 @@ public class Merge {
         int[] arr1 = {2,4,7,11};
         int[] arr2 = {1,3,4,5,8,12};
         System.out.println(Arrays.toString(merge(arr1, arr2)));
+
+        int[] arr3 = {2, 4, 7, 11};
+        int[] arr4 = {8,12};
+        System.out.println(Arrays.toString(merge(arr3, arr4)));
     }
 
     private static int[] merge(int[] arr1, int[] arr2) {
