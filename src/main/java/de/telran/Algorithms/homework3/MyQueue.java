@@ -27,7 +27,7 @@ public class MyQueue {
                 '}';
     }
 
-    public void add(int element) {
+    public void push(int element) {
         if (counter == capacity) {
             System.err.println("Queue is full");
         }
@@ -37,7 +37,7 @@ public class MyQueue {
         }
     }
 
-    public int remove() {
+    public int pop() {
         int res = -1;
         if (counter == 0) {
             System.err.println("Queue is empty");
@@ -49,7 +49,7 @@ public class MyQueue {
         return res;
     }
 
-    public int element() {
+    public int peek() {
         int res = -1;
         if (counter == 0) {
             System.err.println("Queue is empty");
@@ -63,36 +63,36 @@ public class MyQueue {
     public static void main(String[] args) {
         MyQueue myQueue = new MyQueue();
         System.out.println(myQueue);
-        myQueue.add(1);
-        myQueue.add(2);
-        myQueue.add(3);
-        myQueue.add(4);
-        myQueue.add(5);
-        myQueue.add(6);
-        myQueue.add(7);
-        myQueue.add(8);
-        myQueue.add(9);
-        myQueue.add(10);
+        myQueue.push(1);
+        myQueue.push(2);
+        myQueue.push(3);
+        myQueue.push(4);
+        myQueue.push(5);
+        myQueue.push(6);
+        myQueue.push(7);
+        myQueue.push(8);
+        myQueue.push(9);
+        myQueue.push(10);
 //        myQueue.add(11);
         System.out.println(myQueue);
-        System.out.println(myQueue.element());
+        System.out.println(myQueue.peek());
         System.out.println(myQueue);
-        System.out.println(myQueue.remove());
+        System.out.println(myQueue.pop());
         System.out.println(myQueue);
-        System.out.println(myQueue.element());
+        System.out.println(myQueue.peek());
         System.out.println(myQueue);
-        System.out.println(myQueue.remove());
+        System.out.println(myQueue.pop());
         System.out.println(myQueue);
         System.out.println(myQueue);
-        myQueue.remove();
-        myQueue.remove();
-        myQueue.remove();
-        myQueue.remove();
-        myQueue.remove();
-        myQueue.remove();
-        myQueue.remove();
-        myQueue.remove();
-        myQueue.remove();
+        myQueue.pop();
+        myQueue.pop();
+        myQueue.pop();
+        myQueue.pop();
+        myQueue.pop();
+        myQueue.pop();
+        myQueue.pop();
+        myQueue.pop();
+        myQueue.pop();
         System.out.println(myQueue);
     }
 

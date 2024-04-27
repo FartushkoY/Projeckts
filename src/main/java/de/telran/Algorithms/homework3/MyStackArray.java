@@ -37,8 +37,7 @@ public class MyStackArray {
         if (counter == capacity) {
             System.err.println("Stack заполнен. Невозможно добавить новый элемент");
         } else {
-            counter++;
-            myStack[counter - 1] = element;
+            myStack[counter++] = element;
         }
     }
 
