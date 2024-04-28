@@ -1,6 +1,6 @@
 package de.telran.Algorithms;
 
-public class Lesson2_26_03 {
+public class Lesson03_26 {
     public static boolean isEven(int n) {
         if (n == 0) {
             return true;

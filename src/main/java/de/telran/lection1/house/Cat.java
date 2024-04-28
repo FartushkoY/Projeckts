@@ -25,6 +25,12 @@ public class Cat extends Animal implements Mousetrap{
         }
     }
 
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "name='" + getName() + '\'' +
+                '}';
+    }
 
     public void meow() {
         System.out.println("Meow!");

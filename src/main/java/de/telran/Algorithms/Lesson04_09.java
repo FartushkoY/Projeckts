@@ -2,7 +2,7 @@ package de.telran.Algorithms;
 
 import java.util.Arrays;
 
-public class Lesson3_09_04 {
+public class Lesson04_09 {
 
     public class MergeSort {
 

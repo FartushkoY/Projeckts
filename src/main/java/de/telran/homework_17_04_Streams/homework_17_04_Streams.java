@@ -15,7 +15,7 @@ public class homework_17_04_Streams {
 
 //        Посчитать количество людей с именем "Tom" в списке имен
         List<String> names = Arrays.asList("Tom", "Ben", "Frank", "Tom", "Olaf", "Tom", "John");
-        System.out.println(names.stream().filter(string -> string.startsWith("Tom")).count());
+        System.out.println(names.stream().filter(string -> string.equals("Tom")).count());
 
 //        Из списка имен вывести первое по алфавиту, предпоследнее по алфавиту
         System.out.println(names.stream().sorted().findFirst().orElse("exeption"));
@@ -44,7 +44,7 @@ public class homework_17_04_Streams {
         List<String> strings = Arrays.asList("A", "C", "B", "C", "C", "B");
         strings.stream().forEach(System.out::println);
 
-//        public static List method(List strings) {
+//        public static List method(List<String> strings) {
 //            List result = new ArrayList<>();
 //            for (String s : strings) {
 //                if (!result.contains(s)) {
@@ -54,7 +54,12 @@ public class homework_17_04_Streams {
 //            return result;
 //        }
 
-        List<String> result = strings.stream().distinct().collect(Collectors.toCollection(ArrayList::new));
-        System.out.println(result);
+
     }
+    public static List methodWithStream(List<String> strings){
+        List<String> result = strings.stream().distinct().collect(Collectors.toCollection(ArrayList::new));
+        return result;
+    }
+
+
 }

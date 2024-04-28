@@ -16,6 +16,7 @@ public class homework2 {
 
         Integer[] coins1 = {3, 2, 10, 2, 3};
         System.out.println(getResultTask3(coins1, 16));
+        System.out.println(getResultTask3New(coins1, 16));
     }
 
 
@@ -39,9 +40,9 @@ public class homework2 {
     }
 
     private static int getResultTask2(int[] arr) {
-        return findMax(arr, 1, arr[0]);
+        return findMaxTail(arr, 1, arr[0]);
     }
-    private static int findMax(int[] arr, int i, int max) {
+    private static int findMaxTail(int[] arr, int i, int max) {
         if (i == arr.length) {
             return max;
         }
@@ -49,16 +50,31 @@ public class homework2 {
             max = arr[i];
         }
         i++;
-        return findMax(arr, i, max);
+        return findMaxTail(arr, i, max);
     }
     //    В итоге это же хвостовая рекурсия получилась?
 
+//    private static int findMax(int[] arr, int i, int max) {
+//        if (i == arr.length) {
+//            return max;
+//        }
+//
+//        int current = arr[i];
+//        i++;
+//
+//        if (findMax(arr, i, max)) {
+//
+//        }
+//
+//
+//        return findMax(arr, i, max);
+//
+//    }
 
 
 
 
-
-
+//    Integer[] coins1 = {3, 2, 10, 2, 3}
 
     private static boolean canPay(Integer[] coins, int i, int x) {
         if (i == coins.length) return false;
@@ -72,11 +88,20 @@ public class homework2 {
         return canPay(coins, i, x);
     }
 
+    private static boolean getResultTask3New (Integer[] coins, int sum) {
+       return canPay2(coins, 0, sum);
+    }
+    private static boolean canPay2(Integer[] coins, int i, int sum) {
+        if (i == coins.length || sum < 0) return false;
+        else if (sum == 0) return true;
+        else return canPay2(coins, i+1, sum) || canPay2(coins, i+1, sum-coins[i]);
+    }
+
 
     private static boolean getResultTask3(Integer[] coins, int x) {
         Arrays.sort(coins, Collections.reverseOrder());
         return canPay(coins, 0, x);
     }
 //    здесь без сортировки я не нашла вариант решения,
-//    т к нужно же сначала монеты большего номинала использовать, а пртом уже добирать меньшими
+//    т к нужно же сначала монеты большего номинала использовать, а пoтом уже добирать меньшими
 }

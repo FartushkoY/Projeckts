@@ -21,4 +21,11 @@ public abstract class Creature {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Creature{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

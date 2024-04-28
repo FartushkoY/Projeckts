@@ -38,7 +38,7 @@ public class StandartFunctionalInterfaces {
         System.out.println(isLongEnough.test("abc"));
 
         // (data1, data2) ->data3 --- BiFunction (принимает 2 аргумента)  --
-        // - BinaryOperator(принимает 1 аргумент) ---   apply
+        // - BinaryOperator(принимает 2 аргументa) ---   apply
         BinaryOperator<Integer> sum = (int1, int2) -> int1 + int2;
         System.out.println(sum.apply(10, 20));
 

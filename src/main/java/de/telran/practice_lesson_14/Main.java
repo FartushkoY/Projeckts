@@ -2,6 +2,7 @@ package de.telran.practice_lesson_14;
 
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 //        1. Создать класс Employee с характеристиками:
 //        - фамилия, имя, отчество
@@ -42,10 +43,22 @@ public class Main {
         List<Manager> salaryMore3000 = managerList.stream().filter(manager -> manager.getSalary() >= 3000.00).toList();
         System.out.println(salaryMore3000);
 
-        System.out.println(" Получить список сотрудников из отдела маркетинг и увеличить зп на 15%");
-        List<Manager> salesDistrict = managerList.stream().filter(manager -> manager.getDepartment().startsWith("Sales"))
-                .peek(manager -> manager.setSalary(manager.getSalary() * 1.15)).toList();
-        System.out.println(salesDistrict);
+//        System.out.println(" Получить список сотрудников из отдела маркетинг и увеличить зп на 15%");
+//        List<Manager> salesDistrict = managerList.stream().filter(manager -> manager.getDepartment().startsWith("Sales"))
+//                .peek(manager -> manager.setSalary(manager.getSalary() * 1.15)).toList();
+//        System.out.println(salesDistrict);
+
+        System.out.println(" Получить список сотрудников из отдела маркетинг " +
+                "и вывести увеличенные зп на 15%, не изменяя первоначальных данных. Вывести только суммы ");
+        System.out.println(managerList.stream().filter(manager -> manager.getDepartment().startsWith("Sales"))
+                .map(manager -> manager.getSalary() * 1.15).toList());
+
+
+        System.out.println(" Получить список сотрудников из отдела маркетинг " +
+                "и вывести увеличенные зп на 15%, не изменяя первоначальных данных. Вывести сотрудников и суммы ");
+        System.out.println(managerList.stream().filter(manager -> manager.getDepartment().startsWith("Sales"))
+                .map(manager -> new Manager(manager.getName(), manager.getPosition(), manager.getPosition(), manager.getSalary() * 1.15)).toList());
+
 
         System.out.println("Получить сотрудника с самой низкой зп");
         System.out.println(managerList.stream().min(Comparator.comparing(Manager::getSalary)));
@@ -56,6 +69,53 @@ public class Main {
         System.out.println("Получить max зп");
         System.out.println(managerList.stream().mapToDouble(Manager::getSalary).max().orElse(-1));
 
+        System.out.println("Получите сотрудников из всех отделов с максимальной зп");
+        System.out.println(managerList.stream()
+                .collect(Collectors.groupingBy(Manager::getDepartment, Collectors.maxBy(Comparator.comparingDouble(Manager::getSalary)))));
+
+        System.out.println(("Сгрупировать сотрудников по должности"));
+        System.out.println(managerList.stream()
+                .collect(Collectors.groupingBy(Manager::getPosition)));
+
+        System.out.println("--------");
+        Map<String, List<Manager>> groupMap = managerList.stream()
+                .collect(Collectors.groupingBy(Manager::getPosition));
+        for (Map.Entry entry : groupMap.entrySet()) {
+            System.out.println(entry);
+        }
+
+        System.out.println("Вывести имена людей, работающих в каждом отделе");
+        System.out.println(managerList.stream()
+                .collect(Collectors.groupingBy(Manager::getDepartment, Collectors.mapping(Manager::getName, Collectors.toList()))));
+
+        System.out.println(" Вывести имена людей по департаментам одной строкой");
+        System.out.println(managerList.stream()
+                .collect(Collectors.groupingBy(m -> m.getDepartment(),
+                        Collectors.mapping(o -> o.getName(), Collectors.joining(", ", "<",">")))));
+
+
+
+        System.out.println(" Вывести обобщенную информацию по департаментам");
+        Map<String, DoubleSummaryStatistics> summarizingMap = managerList.stream()
+                .collect(Collectors.groupingBy(m -> m.getDepartment(),
+                        Collectors.summarizingDouble(Manager::getSalary)));
+
+        System.out.println("Максимальная зп Sales Department: " + summarizingMap.get("Sales Department").getMax());
+
+        System.out.println("Средняя зп Procurement Department: " + summarizingMap.get("Procurement Department").getAverage());
+
+
+        System.out.println(managerList.stream()
+                .collect(Collectors.groupingBy(m -> m.getDepartment(),
+                        Collectors.averagingDouble(Manager::getSalary))));
+
+        System.out.println(managerList.stream()
+                .collect(Collectors.groupingBy(m -> m.getDepartment(),
+                        Collectors.groupingBy(Manager::getPosition))));
+
+        System.out.println(managerList.stream()
+                .collect(Collectors.groupingBy(m -> m.getDepartment(),
+                        Collectors.groupingBy(Manager::getPosition, Collectors.mapping(Manager::getName, Collectors.toList())))));
 
 
     }

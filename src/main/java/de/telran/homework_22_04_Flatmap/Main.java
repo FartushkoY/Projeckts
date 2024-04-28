@@ -35,8 +35,6 @@ public class Main {
         List<Optional<String>> list = Arrays.asList(Optional.of("A"), Optional.of("B"), Optional.empty());
         List<String> stringList = list.stream().flatMap(Optional::stream).toList();
         System.out.println(stringList);
-        System.out.println("----");
-
 
 
         Cat cat1 = new Cat("Tom", 2, "black");
@@ -69,8 +67,11 @@ public class Main {
 //        Получить Map возраст / количество белых кошек данного возраста
         Map<Integer, Long> ageWhiteCountMap1 = catList.stream().filter(cat -> cat.getColour().equals("white")).collect(Collectors.groupingBy(Cat::getAge, Collectors.counting()));
         Map<Integer, Integer> ageWhiteCountMap2 = catList.stream().filter(cat -> cat.getColour().equals("white")).collect(Collectors.toMap(Cat::getAge, age -> 1, Integer::sum));
+
+        Map<Integer, Integer> whiteCatsByAge = catList.stream().collect(Collectors.toMap(Cat::getAge, cat -> cat.getColour().equals("white") ? 1 : 0, Integer::sum));
         System.out.println(ageWhiteCountMap1);
         System.out.println(ageWhiteCountMap2);
+        System.out.println(whiteCatsByAge);
 
 
 //        (доп. задача) Составить все возможные тройки пифагоровых чисел от 1 до 1000
@@ -79,12 +80,19 @@ public class Main {
 //                [3, 4, 5]
 //                [6, 8, 10]
 
-        Object[] array = IntStream.range(1, 1000).boxed().flatMap(i -> IntStream.range(1, 1000).boxed()
+        List<int[]> triples1 = IntStream.range(1, 1000).boxed().flatMap(i -> IntStream.range(1, 1000).boxed()
                 .filter(j -> Math.sqrt(i * i + j * j) <= 1000 && Math.sqrt(i * i + j * j) % 1 == 0)
-                .map(j -> new int[]{i, j, (int) Math.sqrt(i * i + j * j)})).toArray();
-        System.out.println(Arrays.deepToString(array));
+                .map(j -> new int[]{i, j, (int) Math.sqrt(i * i + j * j)})).toList();
+//        System.out.println(Arrays.deepToString(array));
 
+        int n = 1000;
+        List<int[]> tripples2 = IntStream.rangeClosed(1, n).boxed()
+                .flatMap(i -> IntStream.rangeClosed(i, n).filter(j -> Math.sqrt(i * i + j * j) <= 1000
+                                && Math.sqrt(i * i + j * j) % 1 == 0)
+                .mapToObj(j -> new int[]{i, j, (int) Math.sqrt(i * i + j * j)}))
+                .limit(10).toList(); // если нужно ограничить количество результатов - использовать limit()
 
+//        tripples.forEach(e -> System.out.println(Arrays.toString(e)));
 
     }
 }

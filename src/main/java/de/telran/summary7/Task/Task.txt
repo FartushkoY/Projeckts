@@ -1,0 +1,40 @@
+Переписать фрагменты кода с применением стримов:
+1)
+	Set<String> names = Set.of("Ivan", "Peter", "William", "Mary");
+	Set<Integer> integerSet = new TreeSet<>();
+	for (String s : names) {
+		integerSet.add(s.length());
+	}
+	System.out.println(integerSet);
+
+2)
+	public static Map<Boolean, List<Integer>> getMap() {
+        Map<Boolean, List<Integer>> map = new TreeMap<>();
+        for (int i = 0; i < 100; i++) {
+            if (i % 3 == 0) {
+                if (map.containsKey(true)) {
+                    map.get(true).add(i);
+                } else {
+                    map.put(true, new ArrayList<>());
+                    map.get(true).add(i);
+                }
+            } else {
+                if (map.containsKey(false)) {
+                    map.get(false).add(i);
+                } else {
+                    map.put(false, new ArrayList<>());
+                    map.get(false).add(i);
+                }
+            }
+        }
+        return map;
+    }
+3) Класс summary20240426.Dictionary
+
+4) Написать generic метод arrayFilter(array, filter), который принимает на вход массив array (любого типа)
+и производит фильтрацию данных согласно реализации filter интерфейса Filter (например, через лямбда-выражение)
+Интерфейс Filter имеет метод apply (T t), с помощью которого можно будет указывать способ фильтрации.
+interface Filter {
+   boolean apply(T t);
+}
+Проверьте как работает метод на строках или других объектах.
