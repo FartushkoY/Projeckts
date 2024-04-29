@@ -3,6 +3,7 @@ package de.telran.summary7.Task;
 public interface Filter<T> {
 
     boolean apply(T t);
-        }
+
+}
 
 

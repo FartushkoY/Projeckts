@@ -1,8 +1,15 @@
 package de.telran.summary7.Task;
 
+import de.telran.homeworkComparator.Employee;
+import de.telran.lection1.house.Cat;
+
+
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static java.lang.reflect.Array.newInstance;
 
 public class Task {
     public static void main(String[] args) {
@@ -20,6 +27,15 @@ public class Task {
         System.out.println(integerSet);
 
         System.out.println(getMapWithStream());
+
+        String[] strings = {"Ivan", "Peter", "William", "Mary", "Jane", "Samantha"};
+        System.out.println(arrayFilter(strings, s -> s.length() > 4));
+        Integer[] integers = {1, 2, 3, 4, 5, 6, 7, 8};
+        System.out.println(arrayFilter(integers, i -> i %2 == 0));
+        Double[] doubles = {1.0, 2.0, 3.3, 4.9, 4.1};
+        System.out.println(arrayFilter(doubles, d -> d %1 ==0));
+        Cat[] cats = {new Cat("Tom", 1, "gray"), new Cat("Murka", 2, "white"), new Cat("Havchik", 1, "black")};
+        System.out.println(arrayFilter(cats, cat -> cat.getAge() == 1));
 
 
 //        2)
@@ -45,6 +61,8 @@ public class Task {
 //            return map;
 //        }
 
+
+
     }
 
     public static Map<Boolean, List<Integer>> getMapWithStream() {
@@ -61,9 +79,13 @@ public class Task {
 //    Проверьте как работает метод на строках или других объектах.
 
 
-    public static <T> T[] arrayFilter(T[] array, Filter<T> filter) {
-
-
-        return null;
+    public static <T> List<T> arrayFilter(T[] array, Filter<T> filter) {
+        List<T> result = new ArrayList<>();
+        for (T elem : array) {
+            if (filter.apply(elem)) {
+                result.add(elem);
+            }
+        }
+        return result;
     }
 }
