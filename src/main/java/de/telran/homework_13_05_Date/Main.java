@@ -1,6 +1,4 @@
-package de.telran.homework_15_05_Date;
-
-import com.sun.source.tree.ConditionalExpressionTree;
+package de.telran.homework_13_05_Date;
 
 
 import java.time.*;
@@ -20,9 +18,9 @@ public class Main {
         List<ZonedDateTime> times = localDate.datesUntil(localDate.of(2024, 6, 30))
                 .filter(d -> d == d.with(TemporalAdjusters.nextOrSame(DayOfWeek.MONDAY))
                         || d == d.with(TemporalAdjusters.nextOrSame(DayOfWeek.WEDNESDAY)))
-                .map(d -> ZonedDateTime.of(d, localTime, ZoneId.of("CET")))
-                .toList();
+                .map(d -> ZonedDateTime.of(d, localTime, ZoneId.of("CET"))).toList();
         System.out.println(times);
+        System.out.println("------------");
 
 
 //        2) Рейс из Лос-Анджелеса во Франкфурт отправляется в 15:05 по местному времени
