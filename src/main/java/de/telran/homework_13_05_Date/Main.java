@@ -2,7 +2,6 @@ package de.telran.homework_13_05_Date;
 
 
 import java.time.*;
-import java.time.temporal.TemporalAdjusters;
 import java.util.List;
 
 
@@ -15,11 +14,11 @@ public class Main {
         LocalDate localDate = LocalDate.of(2024, 6, 1);
         LocalTime localTime = LocalTime.of(9, 30);
 
-        List<ZonedDateTime> times = localDate.datesUntil(localDate.of(2024, 6, 30))
-                .filter(d -> d == d.with(TemporalAdjusters.nextOrSame(DayOfWeek.MONDAY))
-                        || d == d.with(TemporalAdjusters.nextOrSame(DayOfWeek.WEDNESDAY)))
+        List<ZonedDateTime> timetable = localDate.datesUntil(localDate.of(2024, 6, 30))
+                .filter(d -> d == d.with(DayOfWeek.MONDAY)
+                        || d == d.with(DayOfWeek.WEDNESDAY))
                 .map(d -> ZonedDateTime.of(d, localTime, ZoneId.of("CET"))).toList();
-        System.out.println(times);
+        System.out.println(timetable);
         System.out.println("------------");
 
 
@@ -28,21 +27,21 @@ public class Main {
 //        Написать метод, который мог бы совершать подобные вычисления.
 
 
-        LocalTime departureTime = LocalTime.of(15, 05);
+        // Я использовала LocalDate.now() в предыдущей версии потому что нам нужно перейти к типу  ZonedDateTime,
+        // a время прилета самолета не зависит от даты, когда он вылетит.
+        //  И результат нам нужен в виде только времени.
+        // Но ок, тогда даем на вход дату и время вылета.
+
+        LocalDateTime departureDataTime = LocalDateTime.of(2024, 5, 25, 15, 5);
         ZoneId departureZoneID = ZoneId.of("America/Los_Angeles");
-        int flightDurationHours = 10;
-        int flightDurationMin = 50;
         ZoneId arrivalZoneID = ZoneId.of("Europe/Berlin");
         Duration duration = Duration.ofMinutes(650);
-        System.out.println(getArrivalTime(departureTime, departureZoneID, duration, arrivalZoneID));
-
-
+        System.out.println(getArrivalTime(departureDataTime, departureZoneID, duration, arrivalZoneID));
     }
 
-    public static LocalTime getArrivalTime(LocalTime departureTime, ZoneId departureZoneID,
+    public static LocalTime getArrivalTime(LocalDateTime departureDataTime, ZoneId departureZoneID,
                                            Duration duration, ZoneId arrivalZoneID) {
-
-        ZonedDateTime departureZonedDateTime = ZonedDateTime.of(LocalDate.now(), departureTime, departureZoneID);
-        return departureZonedDateTime.plus(duration).withZoneSameInstant(arrivalZoneID).toLocalTime();
+        return ZonedDateTime.of(departureDataTime, departureZoneID).plus(duration)
+                .withZoneSameInstant(arrivalZoneID).toLocalTime();
     }
 }

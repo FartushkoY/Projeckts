@@ -1,0 +1,23 @@
+1) Разбить текст на слова с помощью шаблона регулярного выражения и расчитать
+словарь встречающихся слов для этого текста
+(подсчитать количество одинаковых слов, встречающихся в этом тексте).
+
+2) написать регулярное выражение проверки е-мэйл адреса например  my_25@domen-38.de
+
+
+
+вариант препода
+//  1-й вариант
+        Pattern emailPattern = Pattern.compile("^[^_[.]-][\\w-]+([.][\\w-]+)*@[-\\w&&[^_]]{3,20}([.][a-zA-Z]{2,7})?[.][a-zA-Z]{2,}$");
+        Matcher emailMatcher = emailPattern.matcher("my_25@domen-38.de");
+        boolean emailMatch = emailMatcher.matches();
+        System.out.println("Your e-mail matches requirements: " + emailMatch);
+
+//  2-й вариант
+        boolean emailMatch1 = Pattern.matches("^[^_[.]-][\\w-]+([.][\\w-]+)*@[-\\w&&[^_]]{3,20}([.][a-zA-Z]{2,7})?[.][a-zA-Z]{2,}$", "my_25@domen-38.de");
+        System.out.println("Your e-mail matches requirements: " + emailMatch1);
+
+//  3-й вариант
+        String email = "my_25@domen-38.de";
+        boolean emailMatch2 = email.matches("^[^_[.]-][\\w-]+([.][\\w-]+)*@[-\\w&&[^_]]{3,20}([.][a-zA-Z]{2,7})?[.][a-zA-Z]{2,}$");
+        System.out.println("Your e-mail matches requirements: " + emailMatch2);
