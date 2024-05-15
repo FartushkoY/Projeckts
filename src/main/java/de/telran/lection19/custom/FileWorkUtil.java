@@ -14,7 +14,7 @@ public class FileWorkUtil {
             while (fileInputStream.available() > 0) {
 //                int data = fileInputStream.read();
 //                fileOutputStream.write(data);
-                // или
+                // или "заинлайнить" переменную
                 fileOutputStream.write(fileInputStream.read());
             }
             fileInputStream.close();

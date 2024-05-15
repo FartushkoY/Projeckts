@@ -1,0 +1,14 @@
+1. Написать программу, которая
+дает пользователю арифметическую задачу со случайными числами и проверяет ответ
+
+2. Имеется некий код, который может выбрасывать Runtime Exception.
+Реализовать логирование стектрейса Exception со временем ошибки в файл errors.log
+
+3. Имеется несколько экземпляров класса Book
+public class Book {
+    private String title;
+    private String author;
+    private double price;
+    private int bookCount;
+}
+Сохранить их в файл. Считать из файла.

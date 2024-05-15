@@ -33,17 +33,16 @@ public class Main {
         int flightDurationHours = 10;
         int flightDurationMin = 50;
         ZoneId arrivalZoneID = ZoneId.of("Europe/Berlin");
-
-        System.out.println(getArrivalTime(departureTime, departureZoneID, flightDurationHours, flightDurationMin, arrivalZoneID));
+        Duration duration = Duration.ofMinutes(650);
+        System.out.println(getArrivalTime(departureTime, departureZoneID, duration, arrivalZoneID));
 
 
     }
 
     public static LocalTime getArrivalTime(LocalTime departureTime, ZoneId departureZoneID,
-                                           int flightDurationHours, int flightDurationMin, ZoneId arrivalZoneID) {
+                                           Duration duration, ZoneId arrivalZoneID) {
 
         ZonedDateTime departureZonedDateTime = ZonedDateTime.of(LocalDate.now(), departureTime, departureZoneID);
-        return departureZonedDateTime.plusHours(flightDurationHours)
-                .plusMinutes(flightDurationMin).withZoneSameInstant(arrivalZoneID).toLocalTime();
+        return departureZonedDateTime.plus(duration).withZoneSameInstant(arrivalZoneID).toLocalTime();
     }
 }

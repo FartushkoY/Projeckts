@@ -1,6 +1,6 @@
 package de.telran.lection1.house;
 
-public class Cat extends Animal implements Mousetrap{
+public class Cat extends Animal implements Mousetrap, Comparable<Cat>{
 
     public Cat(String catName) {
         this(catName, 1,  "white");
@@ -39,5 +39,20 @@ public class Cat extends Animal implements Mousetrap{
     @Override
     public void catchMouse(Mouse mouse) {
         System.out.println(getName() + " catch Mouse " + mouse.getName());
+    }
+
+    @Override
+    public int compareTo(Cat o) {
+        int result = this.getName().compareTo(o.getName());
+        if (result == 0) {
+            result = Integer.compare(this.getAge(), o.getAge());
+        }
+        if (result == 0) {
+            result = this.getColour().compareTo(o.getColour());
+        }
+        if (result == 0) {
+            result = Boolean.compare(this.isHungry(), o.isHungry());
+        }
+        return result;
     }
 }

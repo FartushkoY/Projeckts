@@ -17,7 +17,7 @@ public class ReduceGeneric {
         System.out.println(reduceGeneric(integers, (i, j) -> i + j, 0));
         System.out.println(reduceGeneric(strings, (s1, s2) -> s1 + s2, "TEST"));
         System.out.println(reduceGeneric(doubles, (i, j) -> i * j, 1.0));
-        System.out.println(reduceGeneric(booleans, (b1, b2) -> b1 = b2, null));
+        System.out.println(reduceGeneric(booleans, (b1, b2) -> b1 == b2, false));
 
     }
 

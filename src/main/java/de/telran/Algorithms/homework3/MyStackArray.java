@@ -3,9 +3,9 @@ package de.telran.Algorithms.homework3;
 import java.util.Arrays;
 
 public class MyStackArray {
-   private int[] myStack;
-   private int capacity;
-   private int counter;
+    private int[] myStack;
+    private int capacity;
+    private int counter;
 
    private static final int DEFAULT_CAPACITY = 10;
 

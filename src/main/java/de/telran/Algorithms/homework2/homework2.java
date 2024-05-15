@@ -54,22 +54,17 @@ public class homework2 {
     }
     //    В итоге это же хвостовая рекурсия получилась?
 
-//    private static int findMax(int[] arr, int i, int max) {
+//    private static int findMax(int[] arr, int i) {
+//        int max =
 //        if (i == arr.length) {
 //            return max;
 //        }
 //
-//        int current = arr[i];
-//        i++;
-//
-//        if (findMax(arr, i, max)) {
-//
-//        }
 //
 //
-//        return findMax(arr, i, max);
-//
+//        return max(arr[i], getMax(arr, i+1));
 //    }
+
 
 
 
