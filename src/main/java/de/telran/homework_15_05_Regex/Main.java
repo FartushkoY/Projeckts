@@ -47,7 +47,7 @@ public class Main {
     }
 
     private static void findWords(String text, char letter) {
-        String regex = "(^[" + letter + "][a-zA-Z]*)|(\\s[Ss][a-zA-Z]*)";
+        String regex = "^[" + letter + "][a-zA-Z]*|\\s" + letter + "[a-zA-Z]*";
         Pattern.compile(regex).matcher(text.toLowerCase()).results().forEach(word -> System.out.println(word.group()));
     }
 }
