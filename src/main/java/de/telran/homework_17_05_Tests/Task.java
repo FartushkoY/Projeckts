@@ -1,4 +1,4 @@
-package de.telran.homework_17_05_Tests;
+package de.telran.homeork_17_05_Tests;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,6 +58,8 @@ public class Task {
 
         int[] arr3 = new int[]{0,3,-2,4,3,2};
         System.out.println(Arrays.toString(getUniqueArray(arr3)));
+
+
     }
 
 
