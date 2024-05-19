@@ -19,6 +19,7 @@ public class SearchInTextExamples {
             System.out.println("Word found: " + searchResult + "start: " + matcher.start() + " end: " + matcher.end());
         }
         // альтернативная запись через стрим
+//        System.out.println("----------");
 //        matcher.results().forEach(matchResult -> System.out.println(matchResult.group()));
 
 

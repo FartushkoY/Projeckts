@@ -3,7 +3,7 @@ package de.telran.homework_06_05;
 import java.io.*;
 import java.util.Scanner;
 
-public class txtFiles {
+public class TxtFiles {
     public static void main(String[] args) {
         String s;
         while (true) {

@@ -15,8 +15,8 @@ public class Main {
         LocalTime localTime = LocalTime.of(9, 30);
 
         List<ZonedDateTime> timetable = localDate.datesUntil(localDate.of(2024, 6, 30))
-                .filter(d -> d == d.with(DayOfWeek.MONDAY)
-                        || d == d.with(DayOfWeek.WEDNESDAY))
+                .filter(d -> d.getDayOfWeek() == DayOfWeek.MONDAY
+                        || d.getDayOfWeek() == DayOfWeek.WEDNESDAY)
                 .map(d -> ZonedDateTime.of(d, localTime, ZoneId.of("CET"))).toList();
         System.out.println(timetable);
         System.out.println("------------");
@@ -36,12 +36,16 @@ public class Main {
         ZoneId departureZoneID = ZoneId.of("America/Los_Angeles");
         ZoneId arrivalZoneID = ZoneId.of("Europe/Berlin");
         Duration duration = Duration.ofMinutes(650);
+        // альтернативная запись
+        Duration durationHM = Duration.ofHours(10).plusMinutes(50);
+//        System.out.println(durationHM);
         System.out.println(getArrivalTime(departureDataTime, departureZoneID, duration, arrivalZoneID));
+        System.out.println(getArrivalTime(departureDataTime, departureZoneID, durationHM, arrivalZoneID));
     }
 
-    public static LocalTime getArrivalTime(LocalDateTime departureDataTime, ZoneId departureZoneID,
+    public static LocalDateTime getArrivalTime(LocalDateTime departureDataTime, ZoneId departureZoneID,
                                            Duration duration, ZoneId arrivalZoneID) {
         return ZonedDateTime.of(departureDataTime, departureZoneID).plus(duration)
-                .withZoneSameInstant(arrivalZoneID).toLocalTime();
+                .withZoneSameInstant(arrivalZoneID).toLocalDateTime();
     }
 }

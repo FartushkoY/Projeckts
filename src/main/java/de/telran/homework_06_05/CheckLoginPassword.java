@@ -18,12 +18,27 @@ public class CheckLoginPassword {
     }
 
 
+    private String userData;
+
+    public String getUserData() {
+        return userData;
+    }
+
+    public void setUserData(String userData) {
+        this.userData = userData;
+    }
+
+    public String getUserInfo() {
+        return "<user>" + userData + "</user>";
+    }
+
+
     public static boolean checkLoginPassword(String login, String password, String confirmPassword) {
         try {
-            if (login.length() > 20 || !login.matches("[a-zA-Z]+"))
+            if (login.length() >= 20 || !login.matches("[a-zA-Z]+"))
                 throw new WrongLoginException("Incorrect login");
 
-            if (password.length() > 20 || !password.matches("[0-9]+"))
+            if (password.length() >= 20 || !password.matches("[0-9]+"))
                 throw new WrongPasswordException("Incorrect password");
             if (!password.equals(confirmPassword))
                 throw new WrongPasswordException("Password does not match the password filed");

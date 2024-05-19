@@ -37,6 +37,7 @@ public class TopKTask {
 
         List<Item> top = topKWithPriorityQueue(items, 1);
         System.out.println(top);
+
     }
 
     public static List<Item> topK(List<Item> items, int k) {

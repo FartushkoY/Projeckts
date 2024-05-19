@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
     public class IpAddressValidation {
 
+
         public static void main(String[] args) {
             // Проверка IP-адреса с помощью регулярных выражений
             //IP-адрес представляет собой строку в виде «A.B.C.D», где значение A, B, C и D может варьироваться от 0 до 255.
