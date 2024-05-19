@@ -1,4 +1,4 @@
-package de.telran.homeork_17_05_Tests;
+package de.telran.homework_17_05_Tests;
 
 import de.telran.summary9.Task;
 import org.junit.jupiter.api.Test;
