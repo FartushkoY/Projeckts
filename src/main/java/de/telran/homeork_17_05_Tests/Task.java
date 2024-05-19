@@ -1,4 +1,4 @@
-package de.telran.summary9;
+package de.telran.homeork_17_05_Tests;
 
 import java.util.ArrayList;
 import java.util.Arrays;

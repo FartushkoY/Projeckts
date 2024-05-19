@@ -7,7 +7,7 @@ public class TopKTask {
     // Дан список из n товаров. У каждого товара есть название и цена.
     // Написать метод для получения списка топ-k самых дешевых товаров, где k - входной параметр.
 
-    static class Item {
+    public static class Item {
         String name;
         Integer price;
 
