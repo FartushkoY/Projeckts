@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class TopKTaskTest {
+public class TopKTaskTest {
     private static List<TopKTask.Item> items = new ArrayList<>();
     private static TopKTask.Item item1 = new TopKTask.Item("Book", 100);
     private static TopKTask.Item item2 = new TopKTask.Item("Toy1", 50);
@@ -24,7 +24,7 @@ class TopKTaskTest {
 
 
     @Test
-    void topKWithPriorityQueue() {
+    public void topKWithPriorityQueue() {
         items = Arrays.asList(item1, item2, item3, item4, item5, item6, item7, item8);
         List<TopKTask.Item> result = TopKTask.topKWithPriorityQueue(items, 3);
         List<TopKTask.Item> expected = Arrays.asList(item4, item6, item8);
