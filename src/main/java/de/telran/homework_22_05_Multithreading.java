@@ -1,6 +1,6 @@
 package de.telran;
 
-import de.telran.homeworkLinkedList.office.JobActions;
+
 
 //  посчитать количество целых чисел в диапазоне от Integer.MINVALUE до Integer.MAXVALUE,
 //  которые делятся на заданное целое число без остатка.
@@ -10,6 +10,7 @@ public class homework_22_05_Multithreading {
         long start = System.currentTimeMillis();
         int number = 5;
         int count = 0;
+
 
         for (int i = Integer.MIN_VALUE; i < Integer.MAX_VALUE; i++) {
             if (i % number == 0) count++;
