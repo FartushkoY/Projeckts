@@ -10,9 +10,9 @@ public class ParallelComputations {
         //Thread1 2 ---- 33_000
         //Thread2 33_000 ---- 66_000
         //Thread3 66_000 ---- 100_000
-        Task task1 = new Task(2, 33000);
-        Task task2 = new Task(33000, 66000);
-        Task task3 = new Task(66000, 100000);
+        Task task1 = new Task(2, 600000);
+        Task task2 = new Task(600000, 800000);
+        Task task3 = new Task(800000, 1000000);
         Thread thread1 = new Thread(task1);
         Thread thread2 = new Thread(task2);
         Thread thread3 = new Thread(task3);

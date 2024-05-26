@@ -1,9 +1,6 @@
 package de.telran.homework_17_05_Tests;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -69,6 +66,13 @@ public class Task {
 
 
     public static int[] getCoincidence(int[] arr1, int[] arr2) {
+//        int[] result = new int[Math.min(arr1.length, arr2.length)];
+//        int counter = 0;
+//        Set<Integer> set = new HashSet<>();
+//        set.addAll(arr1);
+//        result = Arrays.copyOf(result, counter);
+//        return result;
+
         int[] result = new int[Math.min(arr1.length, arr2.length)];
         int counter = 0;
         for (int i = 0; i < arr1.length; i++) {
