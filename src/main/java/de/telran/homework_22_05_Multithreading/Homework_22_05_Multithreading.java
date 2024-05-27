@@ -6,7 +6,7 @@ package de.telran.homework_22_05_Multithreading;
 //  которые делятся на заданное целое число без остатка.
 //  Решить данную задачу последовательно и параллельно в нескольких потоках. Сравнить время выполнения.
 
-public class homework_22_05_Multithreading {
+public class Homework_22_05_Multithreading {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         int number = 5;

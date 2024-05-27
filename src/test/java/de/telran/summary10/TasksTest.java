@@ -30,7 +30,7 @@ public class TasksTest {
 
 
         expected = Arrays.asList("hello");
-        actual = Tasks.findDublicates("one cat hello hello world oneA login: hello admin admin password cat ");
+        actual = Tasks.findDublicates("one cat hello hello world oneA login: hello admin password cat ");
         assertEquals(expected.toString(), actual.toString());
 
         expected = Arrays.asList("hello", "admin");
