@@ -30,6 +30,8 @@ public class GasStation {
     }
 }
 
+
+
 class Car implements Runnable {
     private int countLiters = 40;
     private AtomicInteger barrelGas;
@@ -51,3 +53,6 @@ class Car implements Runnable {
         }
     }
 }
+
+
+

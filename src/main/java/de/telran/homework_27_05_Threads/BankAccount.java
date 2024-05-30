@@ -14,7 +14,15 @@ public class BankAccount {
                 '}';
     }
 
-//  сделала sout в методах в начале и в конце для наглядности, чтобы я могла уидеть, что там происходит
+    public int getSum() {
+        return sum;
+    }
+
+    public void setSum(int sum) {
+        this.sum = sum;
+    }
+
+    //  сделала sout в методах в начале и в конце для наглядности, чтобы я могла уидеть, что там происходит
 //   так-то понятно, что они не нужны
     public synchronized void deposit(int amount) {
         System.out.println(sum);
@@ -58,5 +66,8 @@ public class BankAccount {
             e.printStackTrace();
         }
         System.out.println(bankAccount);
+
+
+
     }
 }

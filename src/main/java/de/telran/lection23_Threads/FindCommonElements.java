@@ -1,4 +1,4 @@
-package de.telran.lection23;
+package de.telran.lection23_Threads;
 
 import java.util.Arrays;
 import java.util.HashSet;

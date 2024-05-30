@@ -1,6 +1,6 @@
-package de.telran.lection24;
+package de.telran.lection24_Threads_Synchronized;
 
-public class SynchProblem {
+public class DeadLockExample {
 
     static Object feed = new Object();
     static Object drink = new Object();

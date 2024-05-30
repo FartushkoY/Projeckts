@@ -1,4 +1,4 @@
-package de.telran.lection24;
+package de.telran.lection24_Threads_Synchronized;
 
 public class AwakeningThreadExample {
 
@@ -17,13 +17,8 @@ public class AwakeningThreadExample {
                     System.out.println(Thread.currentThread().getName() + " is interrupted");;
                 }
             }
-
-
         });
-
-
         thread.start();
-
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

@@ -1,4 +1,4 @@
-package de.telran.lection24;
+package de.telran.lection24_Threads_Synchronized;
 
 import java.time.ZonedDateTime;
 
