@@ -13,6 +13,11 @@ public class TaskRunners {
         public int getRunningTime() {
             return runningTime;
         }
+
+        public synchronized void crossBridge() {
+
+
+        }
     }
 
     static class Runner implements Runnable {
@@ -76,7 +81,16 @@ public class TaskRunners {
             long end = System.currentTimeMillis();
             setTime(end - start);
         }
+
+        public void running() {
+
+        }
+
+
     }
+
+
+
 
 
     public static void main(String[] args) {
@@ -105,6 +119,8 @@ public class TaskRunners {
         System.out.println(runner2);
         System.out.println(runner3);
         System.out.println();
+
+
 
 
         if (runner1.getTime() < runner2.getTime() && runner1.getTime() < runner3.getTime()) {

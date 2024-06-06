@@ -44,11 +44,11 @@ public class BankAccount {
 
     public static void main(String[] args) {
         BankAccount bankAccount = new BankAccount(1000);
-        Thread thread1 = new Thread (() -> bankAccount.deposit(1000));
-        Thread thread5 = new Thread (() -> bankAccount.withdraw(1000));
-        Thread thread2 = new Thread (() -> bankAccount.withdraw(1000));
-        Thread thread3 = new Thread (() -> bankAccount.deposit(500));
-        Thread thread4 = new Thread (() -> bankAccount.withdraw(1000));
+        Thread thread1 = new Thread(() -> bankAccount.deposit(1000));
+        Thread thread5 = new Thread(() -> bankAccount.withdraw(1000));
+        Thread thread2 = new Thread(() -> bankAccount.withdraw(1000));
+        Thread thread3 = new Thread(() -> bankAccount.deposit(500));
+        Thread thread4 = new Thread(() -> bankAccount.withdraw(1000));
 
         thread1.start();
         thread5.start();
@@ -66,8 +66,5 @@ public class BankAccount {
             e.printStackTrace();
         }
         System.out.println(bankAccount);
-
-
-
     }
 }
