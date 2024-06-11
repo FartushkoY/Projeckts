@@ -14,9 +14,9 @@ public class Task3ConsumerForBlockingQueue {
         @Override
         public void run() {
             while (flag) {
-                String[] strings = {"Hello", "lesson", "party", "summer", "sun", "OK", "exit", "by", "super"};
+                String[] strings = {"Hello", "lesson", "party", "summer", "sun", "OK", "exit", "bye", "super"};
                 Random random = new Random();
-                int ind = random.nextInt(strings.length - 1);
+                int ind = random.nextInt(strings.length );
                 deque.putLast(strings[ind]);
             }
             return;
@@ -48,7 +48,8 @@ public class Task3ConsumerForBlockingQueue {
             ReentrantLockArrayDeque<String> deque = new ReentrantLockArrayDeque<>(5);
 
             Producer producer = new Producer(deque);
-            Consumer consumer = new Consumer(deque);
+            Consumer consumer1 = new Consumer(deque);
+            Consumer consumer2 = new Consumer(deque);
 
             new Thread(producer, "Producer").start();
             try {
@@ -56,7 +57,8 @@ public class Task3ConsumerForBlockingQueue {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            new Thread(consumer, "Consumer").start();
+            new Thread(consumer1, "Consumer").start();
+            new Thread(consumer2, "Consumer").start();
         }
     }
 }

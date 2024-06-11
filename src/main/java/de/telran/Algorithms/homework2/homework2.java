@@ -83,7 +83,7 @@ public class homework2 {
         return canPay(coins, i, x);
     }
 
-    private static boolean getResultTask3New (Integer[] coins, int sum) {
+    private static boolean getResultTask3New (Integer[] coins, int sum)  {
        return canPay2(coins, 0, sum);
     }
     private static boolean canPay2(Integer[] coins, int i, int sum) {

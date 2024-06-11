@@ -11,6 +11,7 @@ public class RobotMain {
         threadPutter.start();
         Thread threadTaker = new Thread(robotTaker);
         threadTaker.start();
+
         Thread.sleep(5000);
 
         threadPutter.interrupt();
