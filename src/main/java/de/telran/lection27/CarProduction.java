@@ -63,21 +63,25 @@ public class CarProduction {
 
         @Override
         public void run() {
+            int carCounter = 0;
 
-            while (true) {
+            while (carCounter < 6) {
                 System.out.println("Car factory waits wheels");
                 try {
                     latch.await();
                 } catch (InterruptedException ignore) {
                 }
                 try {
+                    System.out.println("Car factory got the car body");
                     queueCarBody.take();
+                    System.out.println("Car factory got the wheels");
                     queueWheels.take();
                     queueWheels.take();
                     queueWheels.take();
                     queueWheels.take();
                     Thread.sleep(10000);
-                    System.out.println("Car is ready");
+                    carCounter++;
+                    System.out.println("Car " + carCounter + " is ready");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
