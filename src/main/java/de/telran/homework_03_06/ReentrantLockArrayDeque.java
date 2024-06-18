@@ -7,13 +7,13 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ReentrantLockArrayDeque<T> {
 
-    private Deque<T> deque;
-    private int capacity;
-    private int counter;
-    private ReentrantLock lock = new ReentrantLock(true);
+    private final Deque<T> deque;
+    private final int capacity;
+//    private int counter;
+    private final ReentrantLock lock = new ReentrantLock(true);
 
-    private Condition notEmpty = lock.newCondition();
-    private Condition notFull = lock.newCondition();
+    private final Condition notEmpty = lock.newCondition();
+    private final Condition notFull = lock.newCondition();
 
     public ReentrantLockArrayDeque(int capacity) {
         this.capacity = capacity;
@@ -27,12 +27,12 @@ public class ReentrantLockArrayDeque<T> {
     public void putFirst(T t) {
         lock.lock();
         try {
-            while (counter == capacity) {
+            while (deque.size() == capacity) {
                 notFull.awaitUninterruptibly();
             }
             deque.addFirst(t);
-            counter++;
-            System.out.println(Thread.currentThread().getName() + " putFirst " + t + ", deque.size; " + counter);
+//            counter++;
+            System.out.println(Thread.currentThread().getName() + " putFirst " + t + ", deque.size; " + deque.size());
             notEmpty.signal();
         } finally {
             lock.unlock();
@@ -42,12 +42,12 @@ public class ReentrantLockArrayDeque<T> {
     public void putLast(T t) {
         lock.lock();
         try {
-            while (counter == capacity) {
+            while (deque.size() == capacity) {
                 notFull.awaitUninterruptibly();
             }
             deque.addLast(t);
-            counter++;
-            System.out.println(Thread.currentThread().getName() + " putLast " + t + ", deque.size; " + counter);
+//            counter++;
+            System.out.println(Thread.currentThread().getName() + " putLast " + t + ", deque.size; " + deque.size());
             notEmpty.signal();
         } finally {
             lock.unlock();
@@ -58,11 +58,11 @@ public class ReentrantLockArrayDeque<T> {
     public T takeFirst() {
         lock.lock();
         try {
-            while (counter == 0) {
+            while (deque.isEmpty()) {
                 notEmpty.awaitUninterruptibly();
             }
-            counter--;
-            System.out.println(Thread.currentThread().getName() + " takeFirst " + deque.peekFirst() + ", deque.size; " + counter);
+//            counter--;
+            System.out.println(Thread.currentThread().getName() + " takeFirst " + deque.peekFirst() + ", deque.size; " + deque.size());
             notFull.signal();
             return deque.removeFirst();
 
@@ -74,11 +74,11 @@ public class ReentrantLockArrayDeque<T> {
     public T takeLast() {
         lock.lock();
         try {
-            while (counter == 0) {
+            while (deque.isEmpty()) {
                 notEmpty.awaitUninterruptibly();
             }
-            counter--;
-            System.out.println(Thread.currentThread().getName() + " takeLast " + deque.peekLast() + ", deque.size; " + counter);
+//            counter--;
+            System.out.println(Thread.currentThread().getName() + " takeLast " + deque.peekLast() + ", deque.size; " + deque.size());
             notFull.signal();
             return deque.removeLast();
 
@@ -96,5 +96,7 @@ public class ReentrantLockArrayDeque<T> {
             lock.unlock();
         }
     }
+
+
 
 }

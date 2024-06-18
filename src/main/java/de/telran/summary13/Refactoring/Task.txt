@@ -1,0 +1,2 @@
+1. Избавиться от дублирования кода в классе RockScissorsPaperGame
+2. Провести рефакторинг класса GainAlgorithm

@@ -21,19 +21,29 @@ public class SortedArray {
         System.out.println("Sorting time sequential: " + (end - start));
 
         start = System.currentTimeMillis();
-        int[] array2 = Arrays.stream(array).parallel().sorted().toArray();
-        end = System.currentTimeMillis();
-        System.out.println("Sorting time parallel: " + (end - start));
-
-        start = System.currentTimeMillis();
-        int[] array4 = Arrays.stream(array).parallel().sorted().toArray();
-        end = System.currentTimeMillis();
-        System.out.println("Sorting time parallel: " + (end - start));
-
-        start = System.currentTimeMillis();
         int[] array3 = Arrays.stream(array).sorted().toArray();
         end = System.currentTimeMillis();
         System.out.println("Sorting time sequential: " + (end - start));
+
+        start = System.currentTimeMillis();
+        int[] array4 = Arrays.stream(array).sorted().toArray();
+        end = System.currentTimeMillis();
+        System.out.println("Sorting time sequential: " + (end - start));
+
+        start = System.currentTimeMillis();
+        int[] array5 = Arrays.stream(array).parallel().sorted().toArray();
+        end = System.currentTimeMillis();
+        System.out.println("Sorting time parallel: " + (end - start));
+
+        start = System.currentTimeMillis();
+        int[] array6 = Arrays.stream(array).parallel().sorted().toArray();
+        end = System.currentTimeMillis();
+        System.out.println("Sorting time parallel: " + (end - start));
+
+        start = System.currentTimeMillis();
+        int[] array7 = Arrays.stream(array).parallel().sorted().toArray();
+        end = System.currentTimeMillis();
+        System.out.println("Sorting time parallel: " + (end - start));
 
 
 

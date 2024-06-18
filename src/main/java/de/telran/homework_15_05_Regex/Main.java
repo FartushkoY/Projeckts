@@ -59,5 +59,7 @@ public class Main {
 //        Pattern.compile(regex1).matcher(text.toLowerCase()).results().forEach(word -> System.out.println(word.group()));
         List<String> wordsList = Pattern.compile(regex1, Pattern.CASE_INSENSITIVE).matcher(text).results().map(MatchResult::group).toList();
     return wordsList;
+
     }
+
 }
