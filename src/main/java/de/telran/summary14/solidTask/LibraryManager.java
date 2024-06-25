@@ -13,12 +13,20 @@ public class LibraryManager {
 
     public void borrowBook(String isbn, User user){
         Book findBook = library.findBookByIsbn(isbn);
-        if (findBook != null && findBook.getAvailableCopies() != 0) {
+        try  {
             user.borrowBook(findBook);
             findBook.setAvailableCopies(findBook.getAvailableCopies() - 1);
-        } else {
+        } catch (NullPointerException e) {
             System.out.println("Книга не найдена");
         }
+
+
+//        if (findBook != null && findBook.getAvailableCopies() != 0) {
+//            user.borrowBook(findBook);
+//            findBook.setAvailableCopies(findBook.getAvailableCopies() - 1);
+//        } else {
+//            System.out.println("Книга не найдена");
+//        }
 
     }
 

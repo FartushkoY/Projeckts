@@ -57,8 +57,7 @@ public class OrderProcessorRefactor {
                 System.out.println("Shipping Cost: $" + order.getShippingCost());
                 System.out.println("Status: " + order.getOrderStatus());
                 break;
-            }
-            else {
+            } else {
                 System.out.println("Order not found: " + orderId);
             }
         }

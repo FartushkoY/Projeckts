@@ -1,4 +1,4 @@
-package de.telran.lection29.annotation;
+package de.telran.lection29_Reflection_Annotation.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

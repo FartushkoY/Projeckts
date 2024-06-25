@@ -1,7 +1,5 @@
 package de.telran.homework_12_06_Reflection_Annotation;
 
-import de.telran.lection29.annotation.PeopleInOffice;
-
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
@@ -15,12 +13,12 @@ public class School {
 
     public static void main(String[] args) {
         School school = new School();
-        Student student = new Student();
+
 
         System.out.println(school.student1);
         System.out.println(school.student2);
 
-        Injector.inject(student);
+        Injector.inject(school);
         System.out.println(school.student1);
         System.out.println(school.student2);
 
@@ -35,10 +33,12 @@ public class School {
                 if (field.isAnnotationPresent(StudentInfo.class)) {
                     StudentInfo annotation = field.getAnnotation(StudentInfo.class);
                     field.setAccessible(true);
-                    try {
-                        field.set(instance, annotation.name());
-                        field.set(instance, annotation.surname());
-                        field.set(instance, annotation.age());
+                        Student student = new Student();
+                        student.setName(annotation.name());
+                        student.setSurname(annotation.surname());
+                        student.setAge(annotation.age());
+                        try {
+                            field.set(instance, student);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

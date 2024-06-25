@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OrderProcessor {
+    public static final String STANDARD = "standard";
+    public static final String EXPRESS = "express";
     private List<Order> orders = new ArrayList<>();
 
     public void processOrder(String customerId, List<String> itemIds, String shippingMethod) {
@@ -15,8 +17,10 @@ public class OrderProcessor {
             return;
         }
 
-        ArrayList<Item> items = itemIds.stream().filter(itemId -> itemId != null)
-                .map(itemId -> getItemById(itemId)).collect(Collectors.toCollection(ArrayList::new));
+
+//        ArrayList<Item> items = itemIds.stream().filter(itemId -> itemId != null)
+//                .map(itemId -> getItemById(itemId)).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<Item> items = getItemsInCart(itemIds);
 
 //      List<Item> items = new ArrayList<>();
 //        for (String itemId : itemIds) {
@@ -37,7 +41,13 @@ public class OrderProcessor {
 //        for (Item item : items) {
 //            totalAmount += item.getPrice();
 //        }
-        double shippingCost = getShippingCost(shippingMethod);
+        double shippingCost = 0;
+        if (!isValidShipingMethod(shippingMethod)) {
+            System.out.println("Invalid shipping method");
+            return;
+        } else {
+            shippingCost = getShippingCost(shippingMethod);
+        }
 //        double shippingCost = 0;
 //        if ("standard".equals(shippingMethod)) {
 //            shippingCost = 5.99;
@@ -59,11 +69,24 @@ public class OrderProcessor {
 //        System.out.println("Order processed: " + order.getId());
     }
 
+    private ArrayList<Item> getItemsInCart(List<String> itemIds) {
+        ArrayList<Item> items = new ArrayList<>();
+        for (String itemId : itemIds) {
+            Item item = getItemById(itemId);
+            if (item != null) {
+                items.add(item);
+            } else {
+                System.out.println("Item not found: " + itemId);
+            }
+        }
+        return items;
+    }
+
 
     public void cancelOrder(long orderId) {
 
         for (Order order : orders) {
-            if (order.getId() == orderId && order != null) {
+            if (order.getId() == orderId) {
                 orders.remove(order);
                 System.out.println("Order canceled: " + orderId);
                 break;
@@ -89,7 +112,7 @@ public class OrderProcessor {
     public void printOrderDetails(long orderId) {
 
         for (Order order : orders) {
-            if (order.getId() == orderId && order != null) {
+            if (order.getId() == orderId) {
                 System.out.println("Order Details: ");
                 System.out.println("Customer: " + order.getCustomer().getName());
                 System.out.println("Items: ");
@@ -103,11 +126,10 @@ public class OrderProcessor {
                 System.out.println("Shipping Cost: $" + order.getShippingCost());
                 System.out.println("Status: " + order.getOrderStatus());
                 break;
+            } else {
+                System.out.println("Order not found: " + orderId);
             }
-         else {
-            System.out.println("Order not found: " + orderId);
         }
-    }
 //        Order foundOrder = null;
 //        for (Order order : orders) {
 //            if (order.getId() == orderId) {
@@ -141,15 +163,17 @@ public class OrderProcessor {
     }
 
     public double getShippingCost(String shippingMethod) {
-        double shippingCost = 0;
-        if ("standard".equals(shippingMethod)) {
-            shippingCost = 5.99;
-        } else if ("express".equals(shippingMethod)) {
-            shippingCost = 9.99;
-        } else {
-            System.out.println("Invalid shipping method");
-        }
+
+
+        double shippingCost = switch (shippingMethod) {
+            case STANDARD -> 5.99;
+            default -> 9.99;
+        };
         return shippingCost;
+    }
+
+    private boolean isValidShipingMethod(String shippingMethod) {
+        return (STANDARD.equals(shippingMethod) || EXPRESS.equals(shippingMethod));
     }
 
     public Order getOrder(Customer customer, ArrayList<Item> items, double totalAmount, double shippingCost, String status) {
@@ -161,5 +185,9 @@ public class OrderProcessor {
         order.setOrderStatus(status);
         System.out.println("Order processed: " + order.getId());
         return order;
+    }
+
+    public void printLog() {
+
     }
 }
